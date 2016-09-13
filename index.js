@@ -2,12 +2,14 @@
 
 const { MongoClient } = require('mongodb')
 const MONGODB_URL = 'mongodb://localhost:27017/test'
+const [, , ...args] = process.argv;
+const name = RegExp(`^${args.join(' ')}`)
 
 MongoClient
 	.connect(MONGODB_URL)
 	.then(db => {
 		db.collection('restaurants')
-			.find({ name: /Ice/ })
+			.find({ name })
 			// .forEach((restaurant) => {
 				// if (restaurant.name) {
 				// 	console.log(restaurant.name)
