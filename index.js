@@ -7,7 +7,7 @@ MongoClient
 	.connect(MONGODB_URL)
 	.then(db => {
 		db.collection('restaurants')
-			.find()
+			.find({ name: /Ice/ })
 			// .forEach((restaurant) => {
 				// if (restaurant.name) {
 				// 	console.log(restaurant.name)
