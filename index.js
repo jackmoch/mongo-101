@@ -3,13 +3,14 @@
 const { MongoClient } = require('mongodb')
 const MONGODB_URL = 'mongodb://localhost:27017/test'
 const [, , ...args] = process.argv;
-const name = RegExp(`^${args.join(' ')}`)
+const name = RegExp(`^${args.join(' ')}`, 'i')
 
 MongoClient
 	.connect(MONGODB_URL)
 	.then(db => {
 		db.collection('restaurants')
 			.find({ name })
+			.sort({ name: 1 })
 			// .forEach((restaurant) => {
 				// if (restaurant.name) {
 				// 	console.log(restaurant.name)
