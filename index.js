@@ -8,7 +8,7 @@ MongoClient
 	.then(db => {
 		db.collection('restaurants')
 			.find()
-			.each((err, restaurant) => {
+			.forEach((restaurant) => {
 				console.log(restaurant)
 			})
 			.then(db.close)
