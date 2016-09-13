@@ -9,7 +9,9 @@ MongoClient
 		db.collection('restaurants')
 			.find()
 			// .forEach((restaurant) => {
-			// 	console.log(restaurant)
+				// if (restaurant.name) {
+				// 	console.log(restaurant.name)
+				// }
 			// },
 			// 	() => db.close()
 			// )
@@ -17,12 +19,13 @@ MongoClient
 			.toArray()
 			.then((restaurants) => {
 				restaurants.forEach(restaurant => {
-					console.log(restaurant)
+					if (restaurant.name) {
+						console.log(restaurant.name)
+					}
 				})
-				.then(() => db.close())
 			})
+			.then(() => db.close())
 			.catch(console.error)
-
 	})
 	.catch(console.error)
 
