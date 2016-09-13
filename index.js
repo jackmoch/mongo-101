@@ -10,8 +10,9 @@ MongoClient
 			.find()
 			.forEach((restaurant) => {
 				console.log(restaurant)
-			})
-			.then(db.close)
+			},
+				() => db.close()
+			)
 			.catch(console.error)
 			// .toArray()
 			// .then(data => {
